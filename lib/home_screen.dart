@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tic_tac_toe/game_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -91,7 +92,18 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(height: 20),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                if (_formKey.currentState!.validate()) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => GameScreen(
+                          player1: player1Controller.text,
+                          player2: player2Controller.text,
+                        ),
+                      ));
+                }
+              },
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.green,
